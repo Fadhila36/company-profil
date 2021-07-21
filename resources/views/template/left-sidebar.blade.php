@@ -18,7 +18,7 @@
             </a>
         </li>
 
-        <li class="sidebar-item  ">
+        <li class="sidebar-item">
             <a href="{{ route('menu.produk') }}" class='sidebar-link'>
                 <i class="bi bi-file-earmark-medical-fill"></i>
                 <span>Input Produk</span>
@@ -39,7 +39,7 @@
             </a>
             <ul class="submenu ">
                 <li class="submenu-item ">
-                    <a href="component-alert.html">About</a>
+                    <a href="{{ route('menu.about') }}">About</a>
                 </li>
                 <li class="submenu-item ">
                     <a href="{{ route('menu.profil') }}">Profil Web</a>

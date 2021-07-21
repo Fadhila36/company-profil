@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ProfilController;
+use App\Models\About;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,9 +20,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [HomeController::class, 'halamandepan'])->name('home');
 
 Auth::routes(['register' => false]);
 
@@ -45,8 +49,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/menu/produk/{id}/edit', [ProdukController::class, 'edit'])->name('menu.produk.edit');
     Route::post('/menu/produk/{id}/update', [ProdukController::class, 'update'])->name('menu.produk.update');
     Route::post('/menu/produk/{id}/delete', [ProdukController::class, 'destroy'])->name('menu.produk.delete');
-
-
+    
+    // About
+    Route::get('/menu/about/', [AboutController::class, 'index'])->name('menu.about');
+    Route::get('/menu/about/create', [AboutController::class, 'create'])->name('menu.about.create');
+    Route::post('/menu/about/create', [AboutController::class, 'store'])->name('menu.about.create');
+    
     // Profil web
     Route::get('/menu/profil/', [ProfilController::class, 'index'])->name('menu.profil');
     Route::get('/menu/profil/create', [ProfilController::class, 'create'])->name('menu.profil.create');
