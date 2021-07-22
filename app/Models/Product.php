@@ -18,17 +18,4 @@ class Product extends Model
         return $this->belongsTo('App\Models\Categories','category_id');
     }
 
-    function gambar()
-    {
-        if ($this->gambar && file_exists(public_path('images/produk/' . $this->gambar)))
-            return asset('images/produk/' . $this->gambar);
-        else
-            return asset('images/no_image.png');
-    }
-
-    function delete_gambar()
-    {
-        if ($this->gambar && file_exists(public_path('images/produk/' . $this->gambar)))
-            return unlink(public_path('images/produk/' . $this->gambar));
-    }
 }

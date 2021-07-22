@@ -2,7 +2,9 @@
 <html lang="en">
 
 <head>
-    <title>@yield('title') - (Nama Aplikasi)</title>
+    @foreach ($profil as $profil)
+    <title>@yield('title') - {{ $profil->nama_aplikasi }}</title>
+    @endforeach
     @include('template.head')
 </head>
 
@@ -13,7 +15,7 @@
                 <div class="sidebar-header">
                     <div class="d-flex justify-content-between">
                         <div class="logo">
-                            <a href="{{ route('dashboard') }}"><img src="{{ asset('assets/images/logo/Logo2.png') }}" alt="Logo"
+                            <a href="{{ route('dashboard') }}"><img src="{{ asset('images/profil/'.$profil->logo) }}" alt="Logo"
                                     srcset=""></a>
                         </div>
                         <div class="toggler">

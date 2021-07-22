@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categories;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
 
 class ProdukController extends Controller
@@ -28,12 +29,12 @@ class ProdukController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'category_id' => 'required',
-            'nama_produk' => 'required',
-            'harga' => 'required',
-            'satuan' => 'required',
-        ]);
+        // $request->validate([
+        //     'category_id' => 'required',
+        //     'nama_produk' => 'required',
+        //     'harga' => 'required',
+        //     'satuan' => 'required',
+        // ]);
 
         // dd($request->all());
 
@@ -42,11 +43,13 @@ class ProdukController extends Controller
         $products->nama_produk = $request->nama_produk;
         $products->harga = $request->harga;
         $products->satuan = $request->satuan;
-        if ($request->hasFile('gambar')) {
-            $gambar = $request->file('gambar');
-            $name = rand(1000, 9999) . $gambar->getClientOriginalName();
-            $gambar->move('images/produk', $name);
-            $products->gambar = $name;
+        if($request->hasfile('gambar'))
+        {
+            $file = $request->file('gambar');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('images/produk', $filename);
+            $products->gambar = $filename;
         }
         $products->save();
         // dd($request);
@@ -56,12 +59,12 @@ class ProdukController extends Controller
     public function edit($id)
     {
         $categoryMenu = Categories::orderBy('nama_kategori', 'asc')->get();
-        $categoriess = Categories::pluck("nama_kategori", "id")->all();
+        $categoriess = Categories::all();
         $products = Product::find($id);
-        return view("menu.kategori.edit", compact('categoriess', 'products', 'categoryMenu'));
+        return view("menu.produk.edit", compact('categoriess', 'products', 'categoryMenu'));
     }
 
-    public function update(Request $request, Product $products)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'category_id' => 'required',
@@ -70,26 +73,44 @@ class ProdukController extends Controller
             'satuan' => 'required',
         ]);
 
-        $products->category_id = $request->category->id;
-        $products->nama_produk = $request->nama_produk;
-        $products->harga = $request->harga;
-        $products->satuan = $request->satuan;
-        if ($request->hasFile('gambar')) {
-            $products->delete_gambar();
-            $gambar = $request->file('gambar');
-            $name = rand(1000, 9999) . $gambar->getClientOriginalName();
-            $gambar->move('images/produk', $name);
-            $products->gambar = $name;
+        $products = Product::find($id);
+        $products->category_id = $request->input('category_id');
+        $products->nama_produk = $request->input('nama_produk');
+        $products->harga = $request->input('harga');
+        $products->satuan = $request->input('satuan');
+
+        // $products->category_id = $request->category->id;
+        // $products->nama_produk = $request->nama_produk;
+        // $products->harga = $request->harga;
+        // $products->satuan = $request->satuan;
+        if($request->hasfile('gambar'))
+        {
+            $destination = 'images/produk/'.$products->gambar;
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
+            $file = $request->file('gambar');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('images/produk/', $filename);
+            $products->gambar = $filename;
         }
-        $products->save();
-        return redirect()->route('menu.produk.index')->with('toast_success', 'Data Berhasil Di Update');
+
+        $products->update();
+        return redirect()->route('menu.produk')->with('toast_success', 'Data Berhasil Di Update');
     }
 
-    public function destroy(Product $products)
+    public function destroy($id)
     {
-        $products->delete_gambar();
+        $products = Product::find($id);
+        $destination = 'images/produk/'.$products->gambar;
+        if(File::exists($destination))
+        {
+            File::delete($destination);
+        }
         $products->delete();
-        return redirect()->route('menu.produk.index')->with('toast_success', 'Data Berhasil Di Hapus');
+        return redirect()->route('menu.produk')->with('toast_success', 'Data Berhasil Di Hapus');
     }
 
     

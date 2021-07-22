@@ -27,13 +27,13 @@
             <td>{{ $no++ }}</td>
                 <td>{{ $products->categories->nama_kategori }}</td>
                 <td>
-                    <img src="{{ $products->gambar() }}" height="75" />
+                    <img src="{{ asset('images/produk/'.$products->gambar) }}" height="75" />
                 </td>  
                 <td>{{ $products->nama_produk }}</td>
                 <td>@currency($products->harga)</td>
                 <td>{{ $products->satuan }}</td>
             <td>
-                <a class="btn btn-sm btn-warning" href="{{ route('menu.profil.edit', $products->id) }}">Ubah</a>
+                <a class="btn btn-sm btn-warning" href="{{ route('menu.produk.edit', $products->id) }}">Ubah</a>
                 <form method="POST" action="{{ route('menu.produk.delete', $products->id) }}" style="display: inline-block;">
                     @csrf
                     <button class="btn btn-sm btn-danger" onclick="return confirm('Hapus Data?')">Hapus</button>

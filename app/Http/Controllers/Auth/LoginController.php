@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\ProfilWeb;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -42,7 +43,8 @@ class LoginController extends Controller
 
     public function halamanlogin()
     {
-        return view('login.login-aplikasi');
+        $profil = ProfilWeb::all();
+        return view('login.login-aplikasi',['profil' => $profil]);
     }
 
     public function postlogin(Request $request)

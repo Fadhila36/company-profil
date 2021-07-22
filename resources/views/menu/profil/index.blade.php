@@ -1,6 +1,6 @@
 @extends('layouts.master')
-@section('title','Dashboard')
-@section('title-page','Dashboard')
+@section('title','Profil Web')
+@section('title-page','Profil Web')
 @section('content')
 
 
@@ -17,8 +17,7 @@
   <li class="list-group-item">Nama Aplikasi &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{ $profil->nama_aplikasi }}</li>
   <li class="list-group-item">Informasi Aplikasi &nbsp;&nbsp;&nbsp;&nbsp; : {{ $profil->informasi_aplikasi }}</li>
   {{-- <li class="list-group-item">Logo &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{ $profil->logo }}</li> --}}
-  <li class="list-group-item">Logo &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <img src="{{ $profil->getLogo() }}" width="90" height="90" class="img-circle"
-    alt="Logo"></li>
+  <li class="list-group-item">Logo &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <img src="{{ asset('images/profil/'.$profil->logo) }}" width="70px" height="70px" alt="logo"></li>
   <li class="list-group-item">Alamat Lengkap &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{ $profil->alamat_lengkap }}</li>
   {{-- <li class="list-group-item">Google Maps &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{ $profil->google_maps }}</li> --}}
   <li class="list-group-item">No. Telepon &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{ $profil->no_telepon }}</li>

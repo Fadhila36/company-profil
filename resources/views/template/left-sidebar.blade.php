@@ -26,9 +26,16 @@
         </li>
 
         <li class="sidebar-item  ">
-            <a href="form-layout.html" class='sidebar-link'>
+            <a href="{{ route('menu.kontak') }}" class='sidebar-link'>
                 <i class="bi bi-file-earmark-medical-fill"></i>
                 <span>Data Pesan</span>
+            </a>
+        </li>
+
+        <li class="sidebar-item  ">
+            <a href="{{ route('menu.slider') }}" class='sidebar-link'>
+                <i class="bi bi-file-earmark-medical-fill"></i>
+                <span>Foto Slider</span>
             </a>
         </li>    
 

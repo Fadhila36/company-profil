@@ -15,36 +15,36 @@
                 </div>
 
                 <div class="col-12">
-                   <label>Kategori <span class="text-danger">*</span></label>
-                <select class="form-control" name="category_id" />
-                @foreach($categoriess as $category)
-                @if($category==old('category'))
-                <option value="{{ $category }}" selected>{{ $category }}</option>
-                @else
-                <option value="{{ $category }}">{{ $category }}</option>
-                @endif
-                @endforeach
-                </select>
-                </div>
+                    <label>Kategori <span class="text-danger">*</span></label>
+                 <select class="form-control" name="category_id" />
+                 @foreach($categoriess as $category)
+                 @if($category->id==old('category_id', $products->category_id))
+                 <option value="{{ $category->id }}" selected>{{ $category->nama_kategori }}</option>
+                 @else
+                 <option value="{{ $category->id }}" >{{ $category->nama_kategori }}</option>
+                 @endif
+                 @endforeach
+                 </select>
+                 </div>
 
                 <div class="col-12">
                     <div class="form-group">
                         <label for="gambar">Gambar</label>
-                        <input type="file" id="gambar" class="form-control" name="gambar" value="{{ old('gambar') }}">
+                        <input type="file" id="gambar" class="form-control" name="gambar" value="{{ old('gambar', $products->gambar) }}">
                     </div>
                 </div>
 
                 <div class="col-12">
                     <div class="form-group">
                         <label for="harga">Harga</label>
-                        <input type="number" id="harga" class="form-control" name="harga" value="{{ old('harga') }} placeholder="Harga">
+                        <input type="number" id="harga" class="form-control" name="harga" value="{{ old('harga', $products->harga) }} placeholder="Harga">
                     </div>
                 </div>
 
                 <div class="col-12">
                     <div class="form-group">
                         <label for="satuan">Satuan</label>
-                        <input type="text" id="satuan" class="form-control" name="satuan" value="{{ old('satuan') }} placeholder="Masukkan Satuan">
+                        <input type="text" id="satuan" class="form-control" name="satuan" value="{{ old('satuan', $products->satuan) }}" placeholder="Masukkan Satuan">
                     </div>
                 </div>
 
