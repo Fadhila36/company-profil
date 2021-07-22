@@ -26,4 +26,4 @@ atau bisa juga menggantinya dengan masuk ke folder
 -   Seeders
 -   [UsersTableSeeder](https://github.com/Fadhila36/company-profil/blob/master/database/seeders/UsersTableSeeder.php)
 
-             That's it!!
+That's it!!
