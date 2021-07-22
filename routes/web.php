@@ -53,6 +53,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/menu/about/', [AboutController::class, 'index'])->name('menu.about');
     Route::get('/menu/about/create', [AboutController::class, 'create'])->name('menu.about.create');
     Route::post('/menu/about/create', [AboutController::class, 'store'])->name('menu.about.create');
+    Route::get('/menu/about/{id}/edit', [AboutController::class, 'edit'])->name('menu.about.edit');
+    Route::post('/menu/about/{id}/update', [AboutController::class, 'update'])->name('menu.about.update');
+    Route::post('/menu/about/{id}/delete', [AboutController::class, 'destroy'])->name('menu.about.delete');
     
     // Profil web
     Route::get('/menu/profil/', [ProfilController::class, 'index'])->name('menu.profil');

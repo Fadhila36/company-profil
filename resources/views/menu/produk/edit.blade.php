@@ -3,14 +3,14 @@
 @section('title-page','Data Produk')
 @section('content')
 
-<form action="{{route('menu.produk.update', $row)}}" method="post" enctype="multipart/form-data">
+<form action="{{route('menu.produk.update', $products->id)}}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="form-body">
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
                     <label>Nama Produk</label>
-                    <input type="text" name="nama_produk" placeholder="Nama Produk" value="{{ old('nama_produk', $row->nama_produk) }}" required
+                    <input type="text" name="nama_produk" placeholder="Nama Produk" value="{{ old('nama_produk', $products->nama_produk) }}" required
                         class="form-control">
                 </div>
 

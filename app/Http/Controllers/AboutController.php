@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class AboutController extends Controller
 {
@@ -20,23 +21,62 @@ class AboutController extends Controller
     
     public function store(Request $request)
     {
-        $request->validate([
-            'judul' => 'required',
-            'post' => 'required',
-        ]);
-
-
-        $about = new About();
-        $about->judul = $request->judul;
-        $about->post = $request->post;
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $name = rand(1000, 9999) . $image->getClientOriginalName();
-            $image->move('images/about', $name);
-            $about->image = $name;
+        $about = new About;
+        $about->judul = $request->input('judul');
+        $about->post = $request->input('post');
+        if($request->hasfile('image'))
+        {
+            $file = $request->file('image');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('images/about', $filename);
+            $about->image = $filename;
         }
         $about->save();
+     
         return redirect()->route('menu.about')->with('toast_success', 'Data berhasil Disimpan');
     
+    }
+
+    public function edit($id)
+    {
+        $about = About::find($id);
+        return view('menu.about.edit', ['about' => $about]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $about = About::find($id);
+        $about->judul = $request->input('judul');
+        $about->post = $request->input('post');
+        if($request->hasfile('image'))
+        {
+            $destination = 'images/about/'.$about->image;
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
+            $file = $request->file('image');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('images/about', $filename);
+            $about->image = $filename;
+        }
+
+        $about->update();
+        
+        return redirect()->route('menu.about')->with('toast_success', 'Data Berhasil Di Update');
+    }
+
+    public function destroy($id)
+    {
+        $about = About::find($id);
+        $destination = 'images/about/'.$about->image;
+        if(File::exists($destination))
+        {
+            File::delete($destination);
+        }
+        $about->delete();
+        return redirect()->route('menu.about')->with('toast_success', 'Data Berhasil Di Hapus');
     }
 }
