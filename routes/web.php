@@ -20,11 +20,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-Route::get('/', [HomeController::class, 'halamandepan'])->name('home');
+Route::get('/', function () {
+    return view('welcome');
+});
+// Route::get('/', [HomeController::class, 'halamandepan'])->name('home');
 
 Auth::routes(['register' => false]);
 

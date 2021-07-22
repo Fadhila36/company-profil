@@ -21,7 +21,7 @@ class ProdukController extends Controller
     public function create()
     {
         $categoryMenu = Categories::orderBy('nama_kategori', 'asc')->get();
-        $categoriess = Categories::pluck("nama_kategori", "id")->all();
+        $categoriess = Categories::all();
         $products = Product::pluck("nama_produk", "id")->all();
         return view("menu.produk.create", compact('products', 'categoriess', 'categoryMenu'));
     }
@@ -34,6 +34,8 @@ class ProdukController extends Controller
             'harga' => 'required',
             'satuan' => 'required',
         ]);
+
+        // dd($request->all());
 
         $products = new Product();
         $products->category_id = $request->category_id;

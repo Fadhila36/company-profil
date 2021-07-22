@@ -18,10 +18,10 @@
                    <label>Kategori <span class="text-danger">*</span></label>
                 <select class="form-control" name="category_id" />
                 @foreach($categoriess as $category)
-                @if($category==old('category_id'))
-                <option value="{{ $category }}" selected>{{ $category }}</option>
+                @if($category->id==old('category_id'))
+                <option value="{{ $category->id }}" selected>{{ $category->nama_kategori }}</option>
                 @else
-                <option value="{{ $category }}">{{ $category }}</option>
+                <option value="{{ $category->id }}" >{{ $category->nama_kategori }}</option>
                 @endif
                 @endforeach
                 </select>

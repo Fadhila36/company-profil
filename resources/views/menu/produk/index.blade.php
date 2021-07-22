@@ -25,7 +25,7 @@
         @foreach($products as $products)
         <tbody>  
             <td>{{ $no++ }}</td>
-                <td>{{ $products->categoriess }}</td>
+                <td>{{ $products->categories->nama_kategori }}</td>
                 <td>
                     <img src="{{ $products->gambar() }}" height="75" />
                 </td>  

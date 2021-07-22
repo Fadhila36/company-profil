@@ -30,13 +30,4 @@ class HomeController extends Controller
         return view('/dashboard');
     }
 
-    public function halamandepan()
-    {
-        $product = Product::get();
-        $categoriess = Categories::get();
-        $about =About::get();
-        $profil = ProfilWeb::get();
-        return view('welcome',['profil' => $profil,]);
-
-    }
 }

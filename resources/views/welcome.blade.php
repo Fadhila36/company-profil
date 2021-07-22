@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    @foreach ($profil as $profil)
-    <title>{{ $profil->nama_aplikasi }}</title>
-    @endforeach
+    <title>Digilab - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -307,30 +305,25 @@
     	</div>
     </section>
 		
-    
-    @foreach ($about as $item)
+
 		<section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb" id="about-section">
-      <div class="container">
-        <div class="row d-flex">
-          <div class="col-md-6 col-lg-5 d-flex">
-            <div class="img d-flex align-self-stretch align-items-center" style="background-image:url({{ url('home/images/about.jpg') }});">
+    	<div class="container">
+    		<div class="row d-flex">
+    			<div class="col-md-6 col-lg-5 d-flex">
+    				<div class="img d-flex align-self-stretch align-items-center" style="background-image:url({{ url('home/images/about.jpg') }});">
     				</div>
     			</div>
-          @endforeach
     			<div class="col-md-6 col-lg-7 pl-lg-5 py-5">
-            <div class="py-md-5">
-              <div class="row justify-content-start pb-3">
-                <div class="col-md-12 heading-section ftco-animate">
-                  @foreach ($profil as $profil)
-                  <span class="subheading">Welcome to {{ $profil->nama_aplikasi }}</span>
-                  @endforeach
-
-                  @foreach ($about as $about)
-			            <h2 class="mb-4" style="font-size: 34px; text-transform: capitalize;">{{ $about->judul }}</h2>
-			            <p>{{ $about->post }}</p>
-			           </div>
+    				<div class="py-md-5">
+	    				<div class="row justify-content-start pb-3">
+			          <div class="col-md-12 heading-section ftco-animate">
+			          	<span class="subheading">Welcome to digilab</span>
+			            <h2 class="mb-4" style="font-size: 34px; text-transform: capitalize;">We Are Digital Agency</h2>
+			            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+			            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+			            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+			          </div>
 			        </div>
-              @endforeach
 		          <div class="counter-wrap ftco-animate d-flex mt-md-3">
 	              <div class="text p-4 bg-primary">
 	              	<p class="mb-0">
@@ -442,41 +435,36 @@
         </div>
         <div class="row d-flex contact-info mb-5">
           <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-            <div class="align-self-stretch box p-4 text-center">
+          	<div class="align-self-stretch box p-4 text-center">
           		<div class="icon d-flex align-items-center justify-content-center">
-                <span class="icon-map-signs"></span>
+          			<span class="icon-map-signs"></span>
           		</div>
-              @foreach ($profil as $profil)
           		<h3 class="mb-4">Address</h3>
-	            <p>{{ $profil->alamat_lengkap }}</p>
+	            <p>198 West 21th Street, Suite 721 New York NY 10016</p>
 	          </div>
           </div>
-          @endforeach
           <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-            <div class="align-self-stretch box p-4 text-center">
-              <div class="icon d-flex align-items-center justify-content-center">
+          	<div class="align-self-stretch box p-4 text-center">
+          		<div class="icon d-flex align-items-center justify-content-center">
           			<span class="icon-phone2"></span>
           		</div>
-              @foreach ($profil as $profil)
-                  
           		<h3 class="mb-4">Contact Number</h3>
-	            <p><a href="tel://{{ $profil->no_telepon }}">{{ $profil->no_telepon }}</a></p>
+	            <p><a href="tel://1234567920">+ 1235 2355 98</a></p>
 	          </div>
           </div>
-          @endforeach
           <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-            <div class="align-self-stretch box p-4 text-center">
+          	<div class="align-self-stretch box p-4 text-center">
           		<div class="icon d-flex align-items-center justify-content-center">
           			<span class="icon-paper-plane"></span>
           		</div>
           		<h3 class="mb-4">Email Address</h3>
-	            <p><a href="mailto:{{$profil->email}}">{{$profil->email}}</a></p>
+	            <p><a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
 	          </div>
           </div>
           <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-            <div class="align-self-stretch box p-4 text-center">
-              <div class="icon d-flex align-items-center justify-content-center">
-                <span class="icon-globe"></span>
+          	<div class="align-self-stretch box p-4 text-center">
+          		<div class="icon d-flex align-items-center justify-content-center">
+          			<span class="icon-globe"></span>
           		</div>
           		<h3 class="mb-4">Website</h3>
 	            <p><a href="#">yoursite.com</a></p>
@@ -502,11 +490,11 @@
                 <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
               </div>
             </form>
-            
-          </div>
           
+          </div>
+
           <div class="col-md-6 d-flex">
-            <div id="map" class="bg-white"></div>
+          	<div id="map" class="bg-white"></div>
           </div>
         </div>
       </div>
