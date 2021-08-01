@@ -11,7 +11,7 @@ git clone https://github.com/Fadhila36/company-profil.git
 cd company-profil
 composer install
 cp .env.example .env <-- edit db config
-php artisan admin:install
+php artisan company:install <- Untuk menginstall file dummy sebelum di rubah
 Php artisan serve
 ```
 
