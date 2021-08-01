@@ -29,7 +29,7 @@
                         <input type="file" name="logo" value="{{ old('logo') }}" required class="form-control">
                     </div>
                     <div class="form-group">
-                        <img src="{{ $profil->getLogo() }}" class="img-circle" alt="Logo"
+                        <img src="{{ asset('images/profil/'.$profil->logo) }}" class="img-circle" alt="Logo"
                             style="height: 90px;">
                     </div>
 

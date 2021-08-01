@@ -39,6 +39,7 @@ class CompanyInstallerCommand extends Command
     {
         $this->call('key:generate');
         $this->call('migrate:fresh');
-        $this->call('db:seed', ['--class' => 'UserTableSeeder']);
+        $this->call('db:seed', ['--class' => 'UsersTableSeeder']);
+        $this->call('db:seed', ['--class' => 'ProfilSeeder']);
     }
 }

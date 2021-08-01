@@ -27,8 +27,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $profil = ProfilWeb::all();
-        return view('/dashboard',['profil' => $profil]);
+        return view('/dashboard');
     }
 
 }

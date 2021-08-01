@@ -16,9 +16,9 @@
 
     <!-- Style -->
     <link rel="stylesheet" href="{{ asset('login/css/style.css') }}">
-    @foreach ($profil as $profil)
-    <title>Login {{ $profil->nama_aplikasi }}</title>
-    @endforeach
+    
+    <title>Login </title>
+
 </head>
 
 <body>
@@ -35,8 +35,8 @@
                     <div class="row justify-content-center">
                         <div class="col-md-8">
                             <div class="mb-4">
-                                <h3>Sign In to <strong>{{ $profil->nama_aplikasi }}</strong></h3>
-                                <p class="mb-4">Selamat datang di web {{ $profil->nama_aplikasi }}.</p>
+                                <h3>Sign In to <strong></strong></h3>
+                                <p class="mb-4">Selamat datang di web .</p>
                             </div>
                             <form action="{{ route('postlogin') }}" method="post">
                                 @csrf
