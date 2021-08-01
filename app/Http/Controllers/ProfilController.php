@@ -10,7 +10,7 @@ class ProfilController extends Controller
     public function index()
     {
         $profil = ProfilWeb::get();
-        return view('menu.profil.index',['profil' => $profil]);
+        return view('menu.profil.index', ['profil' => $profil]);
     }
 
     public function create()
@@ -30,11 +30,10 @@ class ProfilController extends Controller
         $profil->facebook = $request->input('facebook');
         $profil->instagram = $request->input('instagram');
         $profil->youtube = $request->input('youtube');
-        if($request->hasfile('logo'))
-        {
+        if ($request->hasfile('logo')) {
             $file = $request->file('logo');
             $extention = $file->getClientOriginalExtension();
-            $filename = time().'.'.$extention;
+            $filename = time() . '.' . $extention;
             $file->move('images/profil/', $filename);
             $profil->logo = $filename;
         }
@@ -68,12 +67,12 @@ class ProfilController extends Controller
         return view('menu.profil.edit', ['profil' => $profil]);
     }
 
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
         $profil = ProfilWeb::find($id);
         $profil->update($request->all());
         if ($request->hasFile('logo')) {
-            $request->file('logo')->move('images/', $request->file('logo')->getClientOriginalName());
+            $request->file('logo')->move('images/profil', $request->file('logo')->getClientOriginalName());
             $profil->logo = $request->file('logo')->getClientOriginalName();
             $profil->save();
         }
