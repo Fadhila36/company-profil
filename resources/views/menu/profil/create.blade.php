@@ -38,7 +38,7 @@
                     <div class="form-group">
                         <label>Google Map</label>
                         <textarea name="google_maps" rows="5" class="form-control"
-                            placeholder="Kode dari Google Map"></textarea>
+                            placeholder="Masukan link google maps, contohnya https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15860.348068705383!2d107.4559896!3d-6.3827695!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe025235fff961e9a!2sTambak%20Galian!5e0!3m2!1sid!2sid!4v1627800411565!5m2!1sid!2sid"></textarea>
                     </div>
 
                     <div class="form-group map">
@@ -47,7 +47,6 @@
                                 width: 100%;
                                 max-height: 200px;
                             }
-
                         </style>
 
 
